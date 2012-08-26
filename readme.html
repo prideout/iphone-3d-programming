@@ -1,0 +1,307 @@
+<html>
+<head>
+<title>iPhone 3D</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<style type="text/css">
+
+table {font: 12px 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;  text-align: justify;}
+
+body { margin: 12px 70px 12px 70px; font: 12px 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;  text-align: justify;}
+
+ul {list-style-type: square;}
+
+a:link {text-decoration: none; color : #326fa3}
+a:visited {text-decoration: none;  color : #326fa3}
+a:active {text-decoration: none; color: #666666}
+a:hover {text-decoration: underline;} 
+
+h1 { color: #326fa3; font: 30px  'Lucida Grande', Geneva, Verdana, Arial, sans-serif; font-weight: bold;}
+
+h2 { color: #326fa3; font: 16px   'Lucida Grande', Geneva, Verdana, Arial, sans-serif; font-weight: bold;} 
+
+img { vertical-align:top; display: inline; margin-left: auto; margin-right: auto; width:160px;
+	background-color:#FFFFFF;
+	border-color:lightgray;
+	border-style:solid;
+	border-width:1px;
+	padding:4px;
+}
+
+img:hover {
+    background-color:#326fa3;
+}
+
+.legend {text-align: center;}
+
+blockquote
+{
+	color:#666;
+	margin: 1em;
+	padding: 0 0 10px 50px;
+	background: url(blockquote.gif) no-repeat left top;	
+}
+
+.codebox {
+	background-color:#FFFFFF;
+	border-color:lightgray;
+	border-style:solid;
+	border-width:1px;
+	padding:4px;
+    overflow:auto;
+}
+
+a.tbd {color: #888;}
+.signature {color: #336699;}
+.identifier {color: #307D7E;}
+.selector {color: #6698FF;}
+.comment {color: #6D7B8D;}
+.literal {color: #A74AC7}
+.string {color: #A74AC7}
+.keyword {color: #A74AC7;}
+.result {color: #336699;}
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<br/>
+
+<H1> iPhone 3D Samples </H1>
+
+<p><font color="#326fa3" >Revised May 2010</font></p>
+
+<p>
+Get the source code to an individual sample by clicking its screenshot below.
+</p>
+
+<table bgcolor="whitesmoke" style="border: 1px solid #C9D1D7; width:43em" CELLPADDING="5" >
+  <tr>
+    <td align="left" >
+     <b>Chapter 1: Quick Start Guide</b><br/>
+      <ul>
+	<li><a href="#HelloArrow">HelloArrow</a></li>
+      </ul>
+
+      <b>Chapter 2: Math and Metaphors</b><br/>
+      <ul>
+	<li><a href="#HelloCone">HelloCone</a></li>
+      </ul>
+      
+      <b>Chapter 3: Vertices and Touch Points</b><br/>
+      <ul>
+	<li><a href="#TouchCone">TouchCone</a></li>
+	<li><a href="#ModelViewer.SimpleWireframe">ModelViewer.SimpleWireframe</a></li>
+      </ul>
+
+      <b>Chapter 4: Adding Depth and Realism</b><br/>
+      <ul>
+	<li><a href="#ModelViewer.VertexLighting">ModelViewer.VertexLighting</a></li>
+	<li><a href="#ModelViewer.PixelLighting">ModelViewer.PixelLighting</a></li>
+	<li><a Href="#ModelViewer.ToonLighting">ModelViewer.ToonLighting</a></li>
+	<li><a href="#ModelViewer.FancyWireframe">ModelViewer.FancyWireframe</a></li>
+	<li><a href="#ModelViewer.ObjViewer">ModelViewer.ObjViewer</a></li>
+      </ul>
+
+      <b>Chapter 5: Textures and Image Capture</b><br/>
+      <ul>
+	<li><a href="#ModelViewer.Textured">ModelViewer.Textured</a></li>
+	<li><a href="#TextureFilters">TextureFilters</a></li>
+	<li><a href="#TextureFormats">TextureFormats</a></li>
+	<li><a href="#CameraTexture">CameraTexture</a></li>
+     </ul>
+     
+      <b>Chapter 6: Blending and Augmented Reality</b><br/>
+      <ul>
+	<li><a href="#TextureAlpha">TextureAlpha</a></li>
+	<li><a href="#Trefoil.Stencil">Trefoil.Stencil</a></li>
+	<li><a href="#Trefoil.FakeStencil">Trefoil.FakeStencil</a></li>
+	<li><a href="#Trefoil.Antialiasing">Trefoil.Antialiasing</a></li>
+	<li><a href="#Trefoil.Jitter">Trefoil.Jitter</a></li>
+	<li><a href="#AaLines">AaLines</a></li>
+	<li><a href="#Holodeck.Clouds">Holodeck.Clouds</a></li>
+	<li><a href="#Holodeck.Camera">Holodeck.Camera</a></li>
+      </ul>
+   
+      <b>Chapter 7: Sprites and Text</b><br/>
+      <ul>
+	<li><a href="#Klein.Fps">Klein.Fps</a></li>
+	<li><a href="#Haiku">Haiku</a></li>
+	<li><a href="#DistanceField">DistanceField</a></li>
+	<li><a class="#SpriteSheet" href="#SpriteSheet">SpriteSheet</a></li>
+	<li><a class="#SpringyStars" href="#SpringyStars">SpringyStars</a></li>
+     </ul>
+
+      <b>Chapter 8: Advanced Lighting and Texturing</b><br/>
+      <ul>
+	<li><a href="#Klein.Bumpy">Klein.Bumpy</a></li>
+	<li><a href="#Klein.Cubemap">Klein.Cubemap</a></li>
+	<li><a href="#CrudeBloom">CrudeBloom</a></li>
+	<li><a href="#GaussianBloom">GaussianBloom</a></li>
+     </ul>
+
+      <b>Chapter 9: Optimizing</b><br/>
+      <ul>
+	<li><a href="#VertexSkinning">VertexSkinning</a></li>
+     </ul>
+     
+    </td>
+  </tr>
+</table>
+
+<br/><br/><br/>
+<h2 id="HelloArrow">HelloArrow</h2>
+<a href="HelloArrow">
+<img src="HelloArrow/Screenshot.png" /></a>
+ 
+<br/><br/><br/>
+<h2 id="HelloCone">HelloCone</h2>
+<a href="HelloCone">
+<img src="HelloCone/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="TouchCone">TouchCone</h2>
+<a href="TouchCone">
+<img src="TouchCone/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.SimpleWireframe">ModelViewer.SimpleWireframe</h2>
+<a href="ModelViewer.SimpleWireframe">
+<img src="ModelViewer.SimpleWireframe/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.VertexLighting">ModelViewer.VertexLighting</h2>
+<a href="ModelViewer.VertexLighting">
+<img src="ModelViewer.VertexLighting/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.PixelLighting">ModelViewer.PixelLighting</h2>
+<a href="ModelViewer.PixelLighting">
+<img src="ModelViewer.PixelLighting/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.ToonLighting">ModelViewer.ToonLighting</h2>
+<a href="ModelViewer.ToonLighting">
+<img src="ModelViewer.ToonLighting/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.FancyWireframe">ModelViewer.FancyWireframe</h2>
+<a href="ModelViewer.FancyWireframe">
+<img src="ModelViewer.FancyWireframe/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.ObjViewer">ModelViewer.ObjViewer</h2>
+<a href="ModelViewer.ObjViewer">
+<img src="ModelViewer.ObjViewer/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="ModelViewer.Textured">ModelViewer.Textured</h2>
+<a href="ModelViewer.Textured">
+<img src="ModelViewer.Textured/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="TextureFilters">TextureFilters</h2>
+<a href="TextureFilters">
+<img src="TextureFilters/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="TextureFormats">TextureFormats</h2>
+<a href="TextureFormats">
+<img src="TextureFormats/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="CameraTexture">CameraTexture</h2>
+<a href="CameraTexture">
+<img src="CameraTexture/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="TextureAlpha">TextureAlpha</h2>
+<a href="TextureAlpha">
+<img src="TextureAlpha/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Trefoil.Stencil">Trefoil.Stencil</h2>
+<a href="Trefoil.Stencil">
+<img src="Trefoil.Stencil/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Trefoil.FakeStencil">Trefoil.FakeStencil</h2>
+<a href="Trefoil.FakeStencil">
+<img src="Trefoil.FakeStencil/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Trefoil.Antialiasing">Trefoil.Antialiasing</h2>
+<a href="Trefoil.Antialiasing">
+<img src="Trefoil.Antialiasing/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Trefoil.Jitter">Trefoil.Jitter</h2>
+<a href="Trefoil.Jitter">
+<img src="Trefoil.Jitter/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="AaLines">AaLines</h2>
+<a href="AaLines">
+<img src="AaLines/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Holodeck.Clouds">Holodeck.Clouds</h2>
+<a href="Holodeck.Clouds">
+<img src="Holodeck.Clouds/Screenshot.png" style="width:240px;" /></a>
+
+<br/><br/><br/>
+<h2 id="Holodeck.Camera">Holodeck.Camera</h2>
+<a href="Holodeck.Camera">
+<img src="Holodeck.Camera/Screenshot.png" style="width:240px;" /></a>
+
+<br/><br/><br/>
+<h2 id="Klein.Fps">Klein.Fps</h2>
+<a href="Klein.Fps">
+<img src="Klein.Fps/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Haiku">Haiku</h2>
+<a href="Haiku">
+<img src="Haiku/Screenshot.png" style="width:240px;" /></a>
+
+<br/><br/><br/>
+<h2 id="DistanceField">DistanceField</h2>
+<a href="DistanceField">
+<img src="DistanceField/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="SpriteSheet">SpriteSheet</h2>
+<a href="SpriteSheet">
+<img src="SpriteSheet/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="SpringyStars">SpringyStars</h2>
+<a href="SpringyStars">
+<img src="SpringyStars/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Klein.Bumpy">Klein.Bumpy</h2>
+<a href="Klein.Bumpy">
+<img src="Klein.Bumpy/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="Klein.Cubemap">Klein.Cubemap</h2>
+<a href="Klein.Cubemap">
+<img src="Klein.Cubemap/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="CrudeBloom">CrudeBloom</h2>
+<a href="CrudeBloom">
+<img src="CrudeBloom/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="GaussianBloom">GaussianBloom</h2>
+<a href="GaussianBloom">
+<img src="GaussianBloom/Screenshot.png" /></a>
+
+<br/><br/><br/>
+<h2 id="VertexSkinning">VertexSkinning</h2>
+<a href="VertexSkinning">
+<img src="VertexSkinning/Screenshot.png" /></a>
+
+</body>
+</html>

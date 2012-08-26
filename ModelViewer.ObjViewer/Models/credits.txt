@@ -1,0 +1,11 @@
+Public Domain Models
+--------------------
+
+Name:   Ninja
+Artist: William Vaughan
+Origin: http://features.cgsociety.org/story_custom.php?story_id=580
+
+Name:   micronapalmv2
+Artist: Christophe Desse 
+Origin: http://features.cgsociety.org/story_custom.php?story_id=1115
+

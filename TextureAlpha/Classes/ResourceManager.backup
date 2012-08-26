@@ -1,0 +1,173 @@
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <string>
+#import <iostream>
+#import "Interfaces.hpp"
+
+using namespace std;
+
+struct PvrHeader {
+    unsigned int HeaderLength;
+    unsigned int Height;
+    unsigned int Width;
+    unsigned int MipmapCount;
+    unsigned int Flags;
+    unsigned int DataLength;
+    unsigned int BitsPerPixel;
+    unsigned int ComponentMask[4];
+};
+
+class ResourceManager : public IResourceManager {
+public:
+    ResourceManager()
+    {
+        m_imageData = 0;
+        m_imageCache = 0;
+        m_pvrTexture = 0;
+    }
+    string GetResourcePath() const
+    {
+        NSString* bundlePath =[[NSBundle mainBundle] resourcePath];
+        return [bundlePath UTF8String];
+    }
+    void LoadPngImageWithDraw(const string& basename)
+    {
+        NSString* basePath = [[NSString alloc] initWithUTF8String:basename.c_str()];
+        NSString* fullPath = [[NSBundle mainBundle] pathForResource:basePath ofType:@"png"];
+        UIImage* uiImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+        
+        const int bytesPerPixel = 4;
+        const int bitsPerComponent = 8;
+        
+        m_imageSize.x = CGImageGetWidth(uiImage.CGImage);
+        m_imageSize.y = CGImageGetHeight(uiImage.CGImage);
+        m_imageCache = new unsigned char[m_imageSize.x * m_imageSize.y * bytesPerPixel];
+        
+         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+         CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big;
+         CGContextRef context = CGBitmapContextCreate(m_imageCache,
+             m_imageSize.x,
+             m_imageSize.y,
+             bitsPerComponent,
+             bytesPerPixel * m_imageSize.x,
+             colorSpace,
+             bitmapInfo);
+         CGColorSpaceRelease(colorSpace);
+         CGRect rect = CGRectMake(0, 0, m_imageSize.x, m_imageSize.y);
+         CGContextDrawImage(context, rect, uiImage.CGImage);
+         CGContextRelease(context);
+         [uiImage release];
+    }
+    void LoadPngImageSimplified(const string& name)
+    {
+        NSString* basePath = [[NSString alloc] initWithUTF8String:name.c_str()];
+        NSBundle* mainBundle = [NSBundle mainBundle];
+        NSString* fullPath = [mainBundle pathForResource:basePath ofType:@"png"];
+        UIImage* uiImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+        CGImageRef cgImage = uiImage.CGImage;
+        m_imageSize.x = CGImageGetWidth(cgImage);
+        m_imageSize.y = CGImageGetHeight(cgImage);
+        m_imageData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
+        [uiImage release];
+        [basePath release];
+    }
+    TextureDescription LoadPngImage(const string& file)
+    {
+        NSString* basePath = [[NSString alloc] initWithUTF8String:file.c_str()];
+        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* fullPath = [resourcePath stringByAppendingPathComponent:basePath];
+
+        NSLog(@"Loading PNG image %s...", fullPath);
+
+        UIImage* uiImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+        CGImageRef cgImage = uiImage.CGImage;
+        m_imageData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
+
+        TextureDescription description;
+        description.Size.x = CGImageGetWidth(cgImage);
+        description.Size.y = CGImageGetHeight(cgImage);
+        bool hasAlpha = CGImageGetAlphaInfo(cgImage) != kCGImageAlphaNone;
+        CGColorSpaceRef colorSpace = CGImageGetColorSpace(cgImage);
+        switch (CGColorSpaceGetModel(colorSpace)) {
+            case kCGColorSpaceModelMonochrome:
+                description.Format = hasAlpha ? TextureFormatGrayAlpha : TextureFormatGray;
+                break;
+            case kCGColorSpaceModelRGB:
+                description.Format = hasAlpha ? TextureFormatRgba : TextureFormatRgb;
+                break;
+            default:
+                assert(!"Unsupported color space.");
+                break;
+        }
+        description.BitsPerComponent = CGImageGetBitsPerComponent(cgImage);
+
+        [uiImage release];
+        [basePath release];
+        return description;
+    }
+    TextureDescription LoadPvrImage(const string& file)
+    {
+        NSString* basePath = [[NSString alloc] initWithUTF8String:file.c_str()];
+        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* fullPath = [resourcePath stringByAppendingPathComponent:basePath];
+        
+        NSLog(@"Loading PVR image %s...", fullPath);
+        
+        m_pvrTexture = [[NSData alloc] initWithContentsOfFile:fullPath];
+        PvrHeader* header = (PvrHeader*) [m_pvrTexture bytes];
+        bool hasAlpha = header->ComponentMask[3] ? true : false;
+        
+        TextureDescription description;
+        description.Size.x = header->Width;
+        description.Size.y = header->Height;
+        description.BitsPerComponent = header->BitsPerPixel;
+        description.Format = hasAlpha ? TextureFormatPvrRgba : TextureFormatPvrRgb;
+        description.MipCount = header->MipmapCount;
+        return description;
+    }
+    void* GetImageData()
+    {
+        if (m_imageData)
+            return (void*) CFDataGetBytePtr(m_imageData);
+        
+        if (m_imageCache)
+            return m_imageCache;
+        
+        if (m_pvrTexture) {
+            PvrHeader* header = (PvrHeader*) [m_pvrTexture bytes];
+            char* data = (char*) [m_pvrTexture bytes];
+            unsigned int headerSize = header->HeaderLength;
+            return data + headerSize;
+        }
+        
+        return 0;
+    }
+    void UnloadImage()
+    {
+        if (m_imageCache) {
+            delete m_imageCache;
+            m_imageCache = 0;
+        }
+        if (m_imageData) {
+            CFRelease(m_imageData);
+            m_imageData = 0;
+        }
+        if (m_pvrTexture) {
+            [m_pvrTexture release];
+            m_pvrTexture = 0;
+        }
+    }
+private:
+    CFDataRef m_imageData;
+    NSData* m_pvrTexture;
+    
+    //NSData* m_imageData; // TODO combine the above two into this
+
+    unsigned char* m_imageCache; // TODO nuke me
+    ivec2 m_imageSize;
+};
+
+IResourceManager* CreateResourceManager()
+{
+    return new ResourceManager();
+}
