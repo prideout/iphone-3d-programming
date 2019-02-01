@@ -5,48 +5,48 @@ Revised May 2010
 Get the source code to an individual sample by clicking its screenshot below.
 
 ## Chapter 1: Quick Start Guide
-- [HelloArrow](#helloarrow)
+- [HelloArrow](#HelloArrow)
 
 ## Chapter 2: Math and Metaphors
-- [HelloCone](#hellocone)
+- [HelloCone](#HelloCone)
 
 ## Chapter 3: Vertices and Touch Points
-- [TouchCone](#touchcone)
-- [ModelViewer.SimpleWireframe](#simpleWireframe)
+- [TouchCone](#TouchCone)
+- [SimpleWireframe](#SimpleWireframe)
 
 ## Chapter 4: Adding Depth and Realism
-- [ModelViewer.VertexLighting](#ModelViewer.VertexLighting)
-- [ModelViewer.PixelLighting](#ModelViewer.PixelLighting)
-- [ModelViewer.ToonLighting](#ModelViewer.ToonLighting)
-- [ModelViewer.FancyWireframe](#ModelViewer.FancyWireframe)
-- [ModelViewer.ObjViewer](#ModelViewer.ObjViewer)
+- [VertexLighting](#VertexLighting)
+- [PixelLighting](#PixelLighting)
+- [ToonLighting](#ToonLighting)
+- [FancyWireframe](#FancyWireframe)
+- [ObjViewer](#ObjViewer)
 
 ## Chapter 5: Textures and Image Capture
-- [ModelViewer.Textured](#ModelViewer.Textured)
+- [Textured](#Textured)
 - [TextureFilters](#TextureFilters)
 - [TextureFormats](#TextureFormats)
 - [CameraTexture](#CameraTexture)
 
 ## Chapter 6: Blending and Augmented Reality
 - [TextureAlpha](#TextureAlpha)
-- [Trefoil.Stencil](#Trefoil.Stencil)
-- [Trefoil.FakeStencil](#Trefoil.FakeStencil)
-- [Trefoil.Antialiasing](#Trefoil.Antialiasing)
-- [Trefoil.Jitter](#Trefoil.Jitter)
+- [Stencil](#Stencil)
+- [FakeStencil](#FakeStencil)
+- [Antialiasing](#Antialiasing)
+- [Jitter](#Jitter)
 - [AaLines](#AaLines)
-- [Holodeck.Clouds](#Holodeck.Clouds)
-- [Holodeck.Camera](#Holodeck.Camera)
+- [Clouds](#Clouds)
+- [Camera](#Camera)
 
 ## Chapter 7: Sprites and Text
-- [Klein.Fps](#Klein.Fps)
+- [Fps](#Fps)
 - [Haiku](#Haiku)
 - [DistanceField](#DistanceField)
 - [SpriteSheet](#SpriteSheet)
 - [SpringyStars](#SpringyStars)
 
 ## Chapter 8: Advanced Lighting and Texturing
-- [Klein.Bumpy](#Klein.Bumpy)
-- [Klein.Cubemap](#Klein.Cubemap)
+- [Bumpy](#Bumpy)
+- [Cubemap](#Cubemap)
 - [CrudeBloom](#CrudeBloom)
 - [GaussianBloom](#GaussianBloom)
 
@@ -124,7 +124,7 @@ Get the source code to an individual sample by clicking its screenshot below.
 
 
 # Jitter
-[![TrefoilJitter"](Trefoil.Jitter/Screenshot.png)](Trefoil/)
+[![TrefoilJitter](Trefoil.Jitter/Screenshot.png)](Trefoil/)
 
 
 # AaLines
@@ -140,7 +140,7 @@ Get the source code to an individual sample by clicking its screenshot below.
 
 
 # Fps
-[![KleinFps"](Klein.Fps/Screenshot.png)]((Klein)
+[![KleinFps](Klein.Fps/Screenshot.png)](Klein)
 
 
 # Haiku
